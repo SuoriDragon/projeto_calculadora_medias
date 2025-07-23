@@ -5,7 +5,14 @@ const atividades = [];
 const notas = [];  
 const spanAprovado = '<span class="resultado aprovado">Aprovado</span>';
 const spanReprovado = '<span class="resultado reprovado">Reprovado</span>';
-const notaMinima = parseFloat(prompt("Digite a nota mínima:"));
+
+let notaMinima;
+while (true) {
+    const input = prompt("Digite a nota mínima:");
+    notaMinima = parseFloat(prompt("Digite a nota mínima:"));
+    if (!isNaN(notaMinima)) break;
+    alert("Por favor, digite um número válido.");
+}
 
 let linhas = '';
 
@@ -53,6 +60,8 @@ function atualizaMediaFinal() {
 }
 
     function calculaMediaFinal() {
+    if (notas.length === 0) return 0;
+    
     let somaDasNotas = 0;
 
     for (let i = 0; i < notas.length; i++) {
